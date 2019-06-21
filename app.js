@@ -12,6 +12,7 @@ const port = process.env.PORT || 3000;
 
 const nav = [{link:'/books', title:'Books'}, {link:'/author', title:'Author'}];
 const bookRoute = require('./src/routes/books')(nav);
+const adminRoute = require('./src/routes/adminRoutes')(nav);
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public')));
@@ -21,6 +22,7 @@ app.use('js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 app.use('/books', bookRoute);
+app.use('/admin', adminRoute);
 
 
 app.get('/', (req, res) => {

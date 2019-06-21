@@ -1,51 +1,62 @@
 const express = require('express');
+const {MongoClient, ObjectID} = require('mongodb');
 
+const debug = require('debug')('app:books');
 const bookRoute = express.Router();
 
 function router(nav){
-  const book =[
-    {
-      title:'war and fights',
-      author:'roman mkoji',
-      gener:'fiction reality',
-      read:false
-    },
-    {
-      title:'anjelina and julian',
-      author:'princilar',
-      gener:'love story',
-      read:false
-    },
-    {
-      title:'pirates of kenya',
-      author:'munguti',
-      gener:'kenya war',
-      read:false
-    },
-    {
-      title:'war and fights',
-      author:'roman mkoji',
-      gener:'fiction reality',
-      read:false
-    }
-  ];
 
   bookRoute.route('/').get((req, res) => {
-    res.render('books',
-    {
-      nav,
-      book
-    }
-  );
+    const url = 'mongodb://localhost:27017';
+    const  dbName = 'libraryApp';
+    (async function mongo(){
+      let client;
+      try {
+        client = await MongoClient.connect(url);
+        debug('server connected.....');
+
+        const db = client.db(dbName);
+        const col = await db.collection('book');
+        const book = await col.find().toArray();
+
+        res.render('books',
+        {
+          nav,
+          book
+        }
+      );
+      }catch(err){
+        debug(err.stack);
+  }
+  client
+}());
   });
+
   bookRoute.route('/:id').get((req, res) => {
     const { id } = req.params;
-    res.render('book-view',
-    {
-      nav,
-      book:book[id]
+    const url = 'mongodb://localhost:27017';
+    const  dbName = 'libraryApp';
+
+    (async function mongo(){
+      let client;
+      try {
+        client = await MongoClient.connect(url);
+        debug('server connected.....');
+
+        const db = client.db(dbName);
+        const col = await db.collection('book');
+        const books = await col.findOne({_id: objectId(id).str});
+        res.render('book-view',
+        {
+          nav,
+          book
+        }
+      );
+    }catch(err){
+      debug(err.stack);
     }
-  );
+    client;
+    }());
   });
 
   return bookRoute;
