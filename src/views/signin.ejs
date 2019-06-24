@@ -6,13 +6,13 @@
 		<title>Novel Book Library</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/journal/bootstrap.min.css">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
+		<link href="/css/styles.css" rel="stylesheet">
 	</head>
 	<body>
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
@@ -86,21 +86,17 @@
           <div class="row">
             <br>
             <div class="col-md-8 col-sm-8 container">
-               <h1 class="text-center">Sign Up or <a href="/auth/signin" class="btn btn-warning">Signin</a></h1><hr>
-							 <form class="signupFom" action="/auth/signup/" method="post">
+               <h1 class="text-center">LogIn</h1><hr>
+							 <form class="signupFom" action="/auth/signin/" method="post">
                    <div class="form-group">
                    	<label for="username">Username:</label>
 										<input type="text" name="username" value="" class="form-control">
                    </div>
 									 <div class="form-group">
-                   	<label for="email">Email:</label>
-										<input type="email" name="email" id="email" value="" id="username" class="form-control">
-                   </div>
-									 <div class="form-group">
                    	<label for="password">password:</label>
 										<input type="password" name="password" value=""  class="form-control">
                    </div>
-									 <input type="submit" class="btn btn-success" id="password" value="submit">
+									 <input type="submit" class="btn btn-success" id="password" value="login">
 							 </form>
             </div>
           </div>
@@ -157,6 +153,6 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 	</body>
 </html>
